@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-	// Connect to server using TCP and TLS
 	conn, err := tls.Dial("tcp", "www.example.com:443", nil)
 	if err != nil {
 		fmt.Println("Error connecting:", err)
@@ -14,7 +13,6 @@ func main() {
 	}
 	defer conn.Close()
 
-	// Print TLS version, Cipher Suite, and Issuer Organization
 	state := conn.ConnectionState()
 	fmt.Println("TLS Version:", tlsVersionToString(state.Version))
 	fmt.Println("Cipher Suite:", tls.CipherSuiteName(state.CipherSuite))
